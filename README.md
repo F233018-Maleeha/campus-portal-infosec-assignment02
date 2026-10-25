@@ -53,16 +53,5 @@ Login with seeded user: `alice` / `alice123` (or `admin` / `S3cr3tAdminPW!`).
 | 6 | SQL Injection — Intermediate | `GET /check-user?username=` | Blind boolean-based injection via string concat | Parameterized query |
 | 7 | SQL Injection — Advanced | `GET /search?q=` | UNION-based injection to enumerate columns → extract `users` table | Parameterized query |
 
-## Example Payloads (for report / viva)
 
-- **SQLi Easy (login bypass):** username = `admin' --`, password = (anything)
-- **SQLi Intermediate (blind):** `GET /check-user?username=alice' AND '1'='1` vs `...AND '1'='2` — compare JSON responses
-- **SQLi Advanced (UNION chain):**
-  1. `GET /search?q=x' UNION SELECT NULL,NULL,NULL--` (find column count — adjust NULLs until no error)
-  2. `GET /search?q=x' UNION SELECT 1,name,sql FROM sqlite_master--` (enumerate tables/columns)
-  3. `GET /search?q=x' UNION SELECT id,username,password FROM users--` (extract credentials)
-- **Reflected XSS:** `GET /search?q=<script>alert(1)</script>`
-- **Stored XSS:** submit a review with comment `<script>alert(document.cookie)</script>`
-- **DOM XSS:** visit `/profile#<img src=x onerror=alert(1)>`
-- **CSRF:** while logged in, open `public/csrf-attack.html` in the same browser — email silently changes in Vulnerable Mode, blocked with 403 in Safe Mode
 
