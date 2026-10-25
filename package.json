@@ -1,0 +1,18 @@
+{
+  "name": "campus-portal",
+  "version": "1.0.0",
+  "description": "InfoSec Assignment 2 - Part 2 Web Security Project (Vulnerable + Safe toggle)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "vulnerable": "SAFE_MODE=false node server.js",
+    "safe": "SAFE_MODE=true node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "better-sqlite3": "^11.3.0",
+    "cookie-parser": "^1.4.6",
+    "body-parser": "^1.20.2",
+    "csurf": "^1.11.0"
+  }
+}
